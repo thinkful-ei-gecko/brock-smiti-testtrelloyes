@@ -10,13 +10,22 @@ import ReactDOM from 'react-dom';
 import List from './List';
 
 //this is the test case
-it('renders without crashing', () => {
-  // first create a DOM element to render the component into
-  const div = document.createElement('div');
+describe('List Componet', () => {
+  it('renders without crashing', () => {
+    // first create a DOM element to render the component into
+    const div = document.createElement('div');
 
-  //render the component, this is the actual test, if something is wrong it will fail here
-  ReactDOM.render(<List />, div);
+    //render the component, this is the actual test, if something is wrong it will fail here
+    ReactDOM.render(<List />, div);
 
-  //clean up code
-  ReactDOM.unmountComponentAtNode(div);
+    //clean up code
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('renders the UI as expected', () => {
+    const tree = renderer
+     .create(<List name="List-cards"/>)
+     .toJSON();
+     expect(tree).toMatchSnapshot();
+  });
 });
