@@ -16,7 +16,12 @@ describe('List Componet', () => {
     const div = document.createElement('div');
 
     //render the component, this is the actual test, if something is wrong it will fail here
-    ReactDOM.render(<List />, div);
+    ReactDOM.render(<List 
+        header={''}
+        cards={[]}
+        />, 
+        div);
+
 
     //clean up code
     ReactDOM.unmountComponentAtNode(div);
@@ -24,7 +29,10 @@ describe('List Componet', () => {
 
   it('renders the UI as expected', () => {
     const tree = renderer
-     .create(<List name="List-cards"/>)
+     .create(<List
+        header={''}
+        cards={[]}
+        />)
      .toJSON();
      expect(tree).toMatchSnapshot();
   });
